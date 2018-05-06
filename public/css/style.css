@@ -387,6 +387,9 @@ h3{
         font-weight: 500;
 
     }
+    .marquee_news:hover{
+        text-decoration: none;
+    }
     marquee .font-weight-bold{
        font-size: 12px; 
        padding: 3px;
