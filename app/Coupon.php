@@ -13,7 +13,7 @@ class Coupon extends Model
 
     public function getCoupon()
     {
-    	 $coupon = Coupon :: select('coupon.id as id_coupon', 'title','start_day','end_day','coupon_code','link','number_click','notes','display','id_category','percent','shop.id_shop','type.id as id_type','shop.name as name_shop','type.name as name_type',DB::raw('DATEDIFF(end_day,CURRENT_DATE) as numday'))->join('shop','shop.id_shop','=','coupon.id_shop')->join('type', 'type.id', '=', 'coupon.id_type')->where('display','=',1)->paginate(10);
+    	 $coupon = Coupon :: select('coupon.id as id_coupon', 'title','start_day','end_day','coupon_code','link','number_click','notes','display','id_category','percent','shop.id_shop','type.id as id_type','shop.name as name_shop','type.name as name_type',DB::raw('DATEDIFF(end_day,CURRENT_DATE) as numday'))->join('shop','shop.id_shop','=','coupon.id_shop')->join('type', 'type.id', '=', 'coupon.id_type')->where('display','=',1)->orderBy('coupon.created_at','DESC')->paginate(10);
     	 return $coupon;
     }    
     public function getACoupon($id)
@@ -29,7 +29,7 @@ class Coupon extends Model
          ->where([
                 ['display','=',1],
                 ['shop.id_shop', '=', $idShop],
-            ])
+            ])->orderBy('coupon.created_at','DESC')
          ->paginate(10);
          return $coupon;
     }  
@@ -41,13 +41,17 @@ class Coupon extends Model
          ->where([
                 ['display','=',1],
                 ['id_category', '=', $idCategory],
-            ])
+            ])->orderBy('coupon.created_at','DESC')
          ->paginate(10);
          return $coupon;
     }    
     public function getCouponSearch($key)
     {
-         $coupon = Coupon :: select('coupon.id as id_coupon', 'title','start_day','end_day','coupon_code','link','number_click','notes','display','id_category','percent','shop.id_shop','type.id as id_type','shop.name as name_shop','type.name as name_type',DB::raw('DATEDIFF(end_day,CURRENT_DATE) as numday'))->join('shop','shop.id_shop','=','coupon.id_shop')->join('type', 'type.id', '=', 'coupon.id_type')->where([['display','=',1],['title','like','%'.$key.'%']])->paginate(10);
+        if($key!=null)
+         $coupon = Coupon :: select('coupon.id as id_coupon', 'title','start_day','end_day','coupon_code','link','number_click','notes','display','id_category','percent','shop.id_shop','type.id as id_type','shop.name as name_shop','type.name as name_type',DB::raw('DATEDIFF(end_day,CURRENT_DATE) as numday'))->join('shop','shop.id_shop','=','coupon.id_shop')->join('type', 'type.id', '=', 'coupon.id_type')->where([['display','=',1],['title','like','%'.$key.'%']])->orderBy('coupon.created_at','DESC')->paginate(10);
+        else
+            $coupon = Coupon :: select('coupon.id as id_coupon', 'title','start_day','end_day','coupon_code','link','number_click','notes','display','id_category','percent','shop.id_shop','type.id as id_type','shop.name as name_shop','type.name as name_type',DB::raw('DATEDIFF(end_day,CURRENT_DATE) as numday'))->join('shop','shop.id_shop','=','coupon.id_shop')->join('type', 'type.id', '=', 'coupon.id_type')->where('display','=',1)->orderBy('coupon.created_at','DESC')->paginate(10);
+
          return $coupon;
     } 
     public function updateDispEnd()

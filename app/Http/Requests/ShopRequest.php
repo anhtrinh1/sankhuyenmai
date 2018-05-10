@@ -29,6 +29,7 @@ class ShopRequest extends FormRequest
             'txtIdShop' => 'required|unique:shop,id_shop', 
             'txtNameShop' => 'required',
             'txtLogo' => 'required',
+            'txtDescription' => 'required|max:150',
             ];
         }else{
             return [
@@ -36,6 +37,7 @@ class ShopRequest extends FormRequest
             'txtIdShop' => 'required', 
             'txtNameShop' => 'required',
             'txtLogo' => 'required',
+            'txtDescription' => 'required|max:150',
             ];
         }
         
@@ -46,6 +48,7 @@ class ShopRequest extends FormRequest
             'required'=>':attribute không được để trống',
             'unique'=>':attribute đã tồn tại',
             'url'=>':attribute là đường dẫn của hình ảnh',
+            'max:150'=>':attribute không quá 150 ký tự',
         ];
     }
     public function attributes(){
@@ -53,6 +56,7 @@ class ShopRequest extends FormRequest
             'txtIdShop'=>'Mã shop',
             'txtNameShop'=>'Tên shop',
             'txtLogo'=>'Logo shop',
+            'txtDescription' => 'Mô tả',
         ];
     }
 }

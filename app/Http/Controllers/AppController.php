@@ -15,6 +15,7 @@ use App\NewsShop;
 use App\Visit;
 use App\Online;
 use App\TypeNews;
+use App\Search;
 
 class AppController extends Controller
 {
@@ -62,7 +63,7 @@ class AppController extends Controller
 
     	$Coupon = new Coupon;
     	$coupon = $Coupon->getCoupon();
-    	return view('welcome',compact('shopTop','shopTag','category','coupon','title','titleH1','tinTuc','kn','replace','typeNew','topNews'));
+    	return view('welcome',compact('title','titleH1','tinTuc','shopTop','kn','replace','typeNew','topNews','shopTag','category','coupon'));
     }
     public function getACoupon(Request $request,$id)
     {
@@ -366,7 +367,7 @@ class AppController extends Controller
         return view('welcome',compact('shopTop','shopTag','category','newAll','title','titleH1','tinTuc','kn','status','replace','typeNew','topNews'));
     }
 /*tim kiem*/        
-    public function seach(Request $request)
+    public function search(Request $request)
     {
         /*khai bao su dung replace title*/
         $replace = new Str;
@@ -393,9 +394,13 @@ class AppController extends Controller
 
         $Coupon = new Coupon;
         $coupon = $Coupon->getCouponSearch($search);
-        $newAll = $News->getNewsSearch($search);
+        //$newAll = $News->getNewsSearch($search);
 
-        return view('welcome',compact('shopTop','shopTag','category','coupon','title','titleH1','tinTuc','kn','replace','typeNew','newAll','topNews'));
+        $Search = new Search;
+        $ip = $request->ip();
+        $Search->insertSearch($ip,$search);
+
+        return view('welcome',compact('shopTop','shopTag','category','coupon','title','titleH1','tinTuc','kn','replace','typeNew','topNews'));
     }
     public function ajaxUpdateClick(Request $request,$id)
     {

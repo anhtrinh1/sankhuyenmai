@@ -33,7 +33,8 @@
               </div>
               @endif
               <!-- form start -->
-              <form role="form">
+              <form role="form" action="{{ route($action) }}" name="formshop" method="POST">
+                 @csrf
                 <div class="card-body">
                   <div class="form-group">
                     <label for="exampleInputEmail1">Mã shop</label>

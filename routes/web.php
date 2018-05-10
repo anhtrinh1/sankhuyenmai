@@ -12,9 +12,10 @@
 */
 Route::get('test', 'CategoryController@getData')->name('category'); 
 
-Route::get('/', 'AppController@welcome')->name('welcome');
+
 
 Route::prefix('/')->group(function () {
+    Route::get('/', 'AppController@welcome')->name('welcome');
     Route::get('shop-{idShop}/ma-giam-gia-{shopName}.html',  'AppController@welcomeShop')->name('welcomeShop');
     Route::get('shop.html',  'AppController@welcomeShopAll')->name('welcomeShopAll');
     Route::get('shop/{filter}.html',  'AppController@welcomeShopAllFilter')->name('welcomeShopAllFilter');
@@ -26,7 +27,7 @@ Route::prefix('/')->group(function () {
     Route::get('tin-{idNews}/{nameReplaceUtf8}.html',  'AppController@welcomeNew')->name('welcomeNew');
     Route::get('news/{idNewType}.html',  'AppController@welcomeTypeNews')->name('welcomeTypeNews');
 
-    Route::get('tim-kiem.html',  'AppController@seach')->name('seach');
+    Route::get('tim-kiem.html',  'AppController@search')->name('search');
 
     Route::get('san-khuyen-mai-{id}/{titlReplaceUtf8}.html',  'AppController@getACoupon')->name('getACoupon');
     Route::get('link-click/{id}',  'AppController@ajaxUpdateClick')->name('ajaxUpdateClick');
