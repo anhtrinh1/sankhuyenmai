@@ -15,11 +15,12 @@ class Shop extends Migration
     {
         Schema::create('shop', function (Blueprint $table) {
             $table->string('id_shop')->primary();
-            $table->integer('id_user_create');
-            $table->integer('id_user_update')->nullable();
             $table->boolean('top')->default(false);
             $table->string('name');
+            $table->string('description',150)
             $table->string('logo');
+            $table->integer('id_user_create');
+            $table->integer('id_user_update')->nullable();
             $table->timestamps();
         });
     }
