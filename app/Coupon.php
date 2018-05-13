@@ -35,12 +35,13 @@ class Coupon extends Model
     }  
      public function getCouponOfCategory($idCategory)
     {
-         $coupon = Coupon :: select('coupon.id as id_coupon', 'title','start_day','end_day','coupon_code','link','number_click','notes','display','id_category','percent','shop.id_shop','type.id as id_type','shop.name as name_shop','type.name as name_type',DB::raw('DATEDIFF(end_day,CURRENT_DATE) as numday'))->join('shop','shop.id_shop','=','coupon.id_shop')
+         $coupon = Coupon :: select('coupon.id as id_coupon', 'title','start_day','end_day','coupon_code','link','number_click','notes','display','coupon.id_category','percent','shop.id_shop','type.id as id_type','shop.name as name_shop','type.name as name_type',DB::raw('DATEDIFF(end_day,CURRENT_DATE) as numday'),'category.name as name_category')->join('shop','shop.id_shop','=','coupon.id_shop')
+         ->join('category','category.id_category','=','coupon.id_category')
          ->join('type', 'type.id', '=', 'coupon.id_type')
          ->where('display','=',1)
          ->where([
                 ['display','=',1],
-                ['id_category', '=', $idCategory],
+                ['coupon.id_category', '=', $idCategory],
             ])->orderBy('coupon.created_at','DESC')
          ->paginate(10);
          return $coupon;

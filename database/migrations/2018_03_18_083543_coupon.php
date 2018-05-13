@@ -22,7 +22,7 @@ class Coupon extends Migration
             $table->string('link_img');
             $table->string('percent');
             $table->text('link');
-            $table->bigInteger('number_click')->default(17);
+            $table->bigInteger('number_click')->default(0);
             $table->text('notes')->nullable();
             $table->boolean('display')->default(true);
             $table->timestamps();

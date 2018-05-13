@@ -16,11 +16,11 @@ Route::get('test', 'CategoryController@getData')->name('category');
 
 Route::prefix('/')->group(function () {
     Route::get('/', 'AppController@welcome')->name('welcome');
-    Route::get('shop-{idShop}/ma-giam-gia-{shopName}.html',  'AppController@welcomeShop')->name('welcomeShop');
+    Route::get('shop/{idShop}.html',  'AppController@welcomeShop')->name('welcomeShop');
     Route::get('shop.html',  'AppController@welcomeShopAll')->name('welcomeShopAll');
     Route::get('shop/{filter}.html',  'AppController@welcomeShopAllFilter')->name('welcomeShopAllFilter');
 
-    Route::get('danh-muc-{idCategory}/ma-giam-gia-danh-muc-{categoryName}.html',  'AppController@welcomeCategory')->name('welcomeCategory');
+    Route::get('danh-muc/{idCategory}.html',  'AppController@welcomeCategory')->name('welcomeCategory');
     Route::get('danh-muc.html',  'AppController@welcomeCategoryAll')->name('welcomeCategoryAll');
 
     Route::get('tin-tuc-kinh-nghiem.html',  'AppController@welcomeNews')->name('welcomeNews');

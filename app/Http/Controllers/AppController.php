@@ -101,7 +101,7 @@ class AppController extends Controller
         return view('welcome',compact('shopTop','shopTag','category','coupon','title','titleH1','tinTuc','kn','replace','typeNew','topNews','status'));
     }
 
-    public function welcomeShop(Request $request,$idShop,$nameShop)
+    public function welcomeShop(Request $request,$idShop)
     {
         /*khai bao su dung replace title*/
         $replace = new Str;
@@ -125,10 +125,10 @@ class AppController extends Controller
     	$Coupon = new Coupon;
     	$coupon = $Coupon->getCouponOfShop($idShop);
     	$toMonth = date("m-Y");
-
     	if($coupon!=null){
-    		$title = "Mã giảm giá, tin khuyến mãi của ".$nameShop." tháng ".$toMonth." - Săn Khuyến Mãi";
-    		$titleH1 = ["Săn Khuyến Mãi","Mã giảm giá, tin khuyến mãi của ".$nameShop." tháng ".$toMonth];
+            $nameShop = $coupon->toArray();
+    		$title = "Mã giảm giá, tin khuyến mãi của ".$nameShop['data'][0]['name_shop']." tháng ".$toMonth." - Săn Khuyến Mãi";
+    		$titleH1 = ["Săn Khuyến Mãi","Mã giảm giá, tin khuyến mãi của ".$nameShop['data'][0]['name_shop']." tháng ".$toMonth];
     	}else{
     		$title = "Mã giảm giá, tin khuyến mãi của ".$nameShop." tháng ".$toMonth." - Săn Khuyến Mãi";
     		$titleH1 = ["Săn Khuyến Mãi","Chúng tôi sẽ cập nhật sớm nhất mã giảm giá ".$nameShop];
@@ -136,7 +136,7 @@ class AppController extends Controller
     		$coupon = $Coupon->getCoupon();
     	}  	
     	return view('welcome',compact('shopTop','shopTag','category','coupon','title','titleH1','tinTuc','kn','status','replace','typeNew','topNews'));
-    }
+     }
     public function welcomeShopAll(Request $request)
     {
         /*khai bao su dung replace title*/
@@ -198,7 +198,7 @@ class AppController extends Controller
     	return view('welcome',compact('shopFilter','shopAll','shopTop','shopTag','category','title','titleH1','tinTuc','kn','replace','typeNew','topNews'));
     }
 /*category*/
-    public function welcomeCategory(Request $request,$idCategory,$categoryName)
+    public function welcomeCategory(Request $request,$idCategory)
     {
         /*khai bao su dung replace title*/
         $replace = new Str;
@@ -222,10 +222,11 @@ class AppController extends Controller
 
         $TypeNews = new TypeNews;
         $typeNew = $TypeNews->getTypeNews();
-
+        $categoryName = "";
     	if($coupon!=null){
-    		$title = "Mã giảm giá, tin khuyến mãi danh mục ".$categoryName." tháng ".$toMonth." - Săn Khuyến Mãi";
-    		$titleH1 = ["Săn Khuyến Mãi","Mã giảm giá, tin khuyến mãi danh mục ".$categoryName." tháng ".$toMonth];
+            $categoryName = $coupon->toArray();
+    		$title = "Mã giảm giá, tin khuyến mãi danh mục ".$categoryName['data'][0]['name_category']." tháng ".$toMonth." - Săn Khuyến Mãi";
+    		$titleH1 = ["Săn Khuyến Mãi","Mã giảm giá, tin khuyến mãi danh mục ".$categoryName['data'][0]['name_category']." tháng ".$toMonth];
     	}else{
     		$title = "Mã giảm giá, tin khuyến mãi danh mục ".$categoryName." tháng ".$toMonth." - Săn Khuyến Mãi";
     		$titleH1 = ["Săn Khuyến Mãi","Chúng tôi sẽ cập nhật sớm nhất mã giảm giá danh mục ".$categoryName];

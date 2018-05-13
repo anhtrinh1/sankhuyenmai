@@ -145,22 +145,22 @@ header .menu-bottom nav ul.menu-parent li:hover .sub-menu-category{
     border-radius: 2px;
 }
 
-.newfeed_thumb,.newfeed{
+.news h5,.news a{
  display: inline-table;
  padding: 0;
 }
-.newfeed h5{
+.news h5{
     color: #222;
     padding-top: 10px;
     font-size: 16px;
 }
-.newfeed a{
+.newsa{
     text-decoration: none;
 }
-.newfeed a:hover h5{
+.news a:hover h5{
     color: #3498db;
 }
-.newfeed h2{
+.news h2{
    font-weight: 300;
    font-size: 21px;
 }
@@ -223,13 +223,16 @@ h3{
     .title-coupon .control-coupon .button-detail:hover, .title-coupon .control-coupon .button-watch:hover{
         background: #d35400;
     }
-    .coupon-post .coupon_brand, .coupon-post .coupon_number,.coupon-post .coupon_date,.coupon-post .coupon_type, .coupon-post .coupon_brand a {
+    .coupon-post .coupon_brand,.coupon-post .coupon_comment, .coupon-post .coupon_number,.coupon-post .coupon_date,.coupon-post .coupon_type, .coupon-post .coupon_brand a {
         display: inline;
         text-align: center;
         font-size: 21px;
     }
-    .coupon-post .coupon_date,.coupon-post .coupon_number, .coupon-post .coupon_type {
-
+    .coupon_comment{
+        margin-left: 5px;
+    }
+    .coupon_comment a{
+        color: #d63031;
     }
     .coupon_date {
         padding:  0 10px 0 10px;
@@ -637,10 +640,6 @@ h3{
     position: relative;
     display: inline-block;
     cursor: pointer;
-    -webkit-user-select: none;
-    -moz-user-select: none;
-    -ms-user-select: none;
-    user-select: none;
 }
 
 /* The actual popup */
