@@ -4,8 +4,8 @@
               <div class="modal-dialog modal-dialog-centered login animated">
                   <div class="modal-content">
                      <div class="modal-header">
-                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                        <h4 class="modal-title">Login with</h4>
+                      <h4 class="modal-title">Đăng Nhập</h4>
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>                        
                     </div>
                     <div class="modal-body">  
                         <div class="box">
@@ -41,13 +41,13 @@
                         <div class="box">
                             <div class="content registerBox" style="display:none;">
                              <div class="form">
-                                <!-- <form id="frm-register" method="post" action="{{ __('Register') }}" >
+                                <form id="frm-register" method="post" action="{{ __('Register') }}" >
                                 @csrf
-                                <input id="email" class="form-control" type="text" placeholder="Email" name="email">
-                                <input id="password" class="form-control" type="password" placeholder="Password" name="password">
+                                <input id="reg-email" class="form-control" type="text" placeholder="Email" name="email">
+                                <input id="reg-password" class="form-control" type="password" placeholder="Password" name="password">
                                 <input id="password_confirmation" class="form-control" type="password" placeholder="Repeat Password" name="password_confirmation">
                                 <input class="btn btn-default btn-register" type="submit" value="Create account" name="commit">
-                                </form> -->
+                                </form>
                                 </div>
                             </div>
                         </div>

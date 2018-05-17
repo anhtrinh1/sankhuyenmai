@@ -18,6 +18,8 @@ class CreateCommentsTable extends Migration
             $table->text('message');
             $table->boolean('approve')->default(false);
             $table->integer('user_id');
+            $table->bigInteger('coupon_id')->default(0);
+            $table->bigInteger('new_id')->default(0);
             $table->timestamps();
         });
     }

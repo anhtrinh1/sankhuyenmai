@@ -9,15 +9,21 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
     <title>{{ config('app.name', 'Săn Khuyến Mãi') }}</title>
-
+<!-- Font Awesome -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+  <!-- Ionicons -->
+  <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+  <!-- DataTables -->
+  <link rel="stylesheet" href="{{ asset('js/plugins/datatables/dataTables.bootstrap4.min.css')}}">
     <link rel="icon" href="{{ asset('iconlogo.ico') }}" type="image/gif" sizes="16x16">
+    <link rel="stylesheet" href="{{ asset('css/bootstrap.min.css')}}">
     <!-- Theme style -->
     <link rel="stylesheet" href="{{ asset('css/adminlte.min.css') }}">
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-
+    <link rel="stylesheet" href="{{asset('css/fontawesome-all.min.css')}}">
+    <script src="{{ asset('js/jquery.min.js')}}"></script>
    <style type="text/css">
       #logout {display: none;
       }
@@ -175,7 +181,7 @@
           <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
           <li class="nav-item has-treeview menu-open">
-            <a href="/home" class="nav-link active">
+            <a href="{{ route('home')}}" class="nav-link active">
               <i class="nav-icon fa fa-dashboard"></i>
               <p>
                 Dashboard
@@ -274,6 +280,10 @@
 <!-- ./wrapper -->
     <!-- AdminLTE App -->
 <script src="{{ asset('js/adminlte.js') }}"></script>
+ 
+<!-- AdminLTE for demo purposes -->
+<script src="{{asset('js/demo.js')}}"></script>
+
 </body>
 </html>
 

@@ -1,4 +1,3 @@
-{{-- begin sidebar --}}
 <div id="sidebar" class="w-31  col-md-4 col-sm-12 col-xs-12 col-lg-4">
     <div class="sidebar-box">
         <div class="head">
@@ -63,4 +62,3 @@
         </div>
     </div>
 </div>
-{{-- end sidebar --}}

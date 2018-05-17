@@ -16,7 +16,7 @@ class Visit extends Migration
         Schema::create('visit', function (Blueprint $table) {
             $table->increments('id');
             $table->string('ip',30);
-            $table->string('session',33);
+            $table->string('session');
             $table->dateTime('visit_start');
             $table->dateTime('visit_end');
         });

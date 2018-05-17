@@ -34,7 +34,7 @@
                         class="icon ion-bag"></i>
                     </span> @endif {{$value->name_type}}
                 </p>
-                <p class="coupon_comment"><a href="#"><i class="fa fa-comment-dots"></i><sup>4</sup></a></p>
+                <p class="coupon_comment"><span onclick="displayDetail('comment-{{$value->id_coupon}}');"><i class="fa fa-comment-dots"></i><sup class="lazy" data-loader="countcmt" data-src="{{url('/getCountCmtCoupon/'.$value->id_coupon)}}"></sup></span></p>
 
             </div>
         </div>
@@ -107,7 +107,9 @@
                 </div>
             </div>
         </div>
+        <!-- comment -->
         @include('comment')
+        <!-- end comment -->
     </div>
 </div>
 @endforeach

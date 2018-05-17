@@ -48,14 +48,14 @@ class HomeController extends Controller
         $visit = new Visit;
         $visitAll = $visit ->getVisit();
         $visitYear = $visit ->getVisitYear(null);
-        return view('home',compact('on','visitAll','visitYear'));
+        return view('home.home',compact('on','visitAll','visitYear'));
     }
 /*shop*/
     public function showShop()
     {
         $action = "addNewShop";
          $shop = Shop :: select('*')->paginate(10);
-         return view('shop',compact('shop','action'));
+         return view('home.shop',compact('shop','action'));
     }
     public function addNewShop(Request $request,ShopRequest $shopRequest)
     {   
@@ -79,7 +79,7 @@ class HomeController extends Controller
         $disabled = "disabled";
         $dataEdit = Shop :: select('*')->where('id_shop', '=', $id)->first();
         $shop = Shop :: select('*')->paginate(10);
-        return view('shop',compact('dataEdit','shop','action','disabled'));
+        return view('home.shop',compact('dataEdit','shop','action','disabled'));
 
     }
     public function postEditShop(Request $request, ShopRequest $shopRequest)
@@ -114,7 +114,7 @@ class HomeController extends Controller
     $category =  Category :: all() -> toArray() ;
     $shop = Shop :: all()->toArray();
     $type = Type :: all()->toArray();
-    return view('coupon',compact('coupon','action_coupon','action_cate','category','shop','type'));
+    return view('home.coupon',compact('coupon','action_coupon','action_cate','category','shop','type'));
     }
     public function addNewCoupon(Request $request,CouponRequest $couponRequest)
     {
@@ -161,7 +161,7 @@ class HomeController extends Controller
         ->where('coupon.id','=',$id)
         ->select('users.id','users.name as name_user', 'coupon.id as id_coupon','coupon.link', 'coupon.title','coupon.start_day','coupon.end_day','coupon.notes','coupon.coupon_code','coupon.number_click','coupon.link_img','coupon.display','percent','category.id_category','category.name as name_category','shop.id_shop','shop.name as name_shop',
             'type.id as id_type','type.name as name_type')->get()->first();
-        return view('coupon',compact('dataEditCoupon','coupon','shop','category','action_coupon','action_cate','action_coupon_edit','disabled','type'));
+        return view('home.coupon',compact('dataEditCoupon','coupon','shop','category','action_coupon','action_cate','action_coupon_edit','disabled','type'));
 
     }
     public function postEditCoupon(Request $request, CouponRequest $couponRequest)
@@ -197,7 +197,7 @@ class HomeController extends Controller
     {
         $action_cate = "addNewCategory";
         $category =  Category :: all() -> toArray() ;
-        return view('category',compact('action_cate','category'));
+        return view('home.category',compact('action_cate','category'));
     }
     public function addNewCategory(CategoryRequest $request)
     {
@@ -224,7 +224,7 @@ class HomeController extends Controller
         $dataEditCategory = DB::table('category')
         ->where('category.id_category','=',$id)
         ->select( '*')->get()->first();
-        return view('category',compact('dataEditCategory','category','action_cate','action_cate_edit','disabled'));
+        return view('home.category',compact('dataEditCategory','category','action_cate','action_cate_edit','disabled'));
 
     }
     public function postEditCategory(CategoryRequest $request)
@@ -249,7 +249,7 @@ class HomeController extends Controller
     {
         $action = "addNewType";
         $type = Type :: select('*')->get()->toArray() ;
-        return view('type',compact('type','action'));
+        return view('home.type',compact('type','action'));
     }
     public function addNewType(TypeRequest $request)
     {
@@ -291,7 +291,7 @@ class HomeController extends Controller
     {
         $action = "addNewType";
         $type = TypeNews :: select('*')->get()->toArray() ;
-        return view('type_news',compact('type','action'));
+        return view('home.type_news',compact('type','action'));
     }
     public function addNewTypeNew(TypeRequest $request)
     {
@@ -311,7 +311,7 @@ class HomeController extends Controller
         $disabled = "disabled";
         $dataEdit = TypeNews :: select('*')->where('id', '=', $id)->first();
         $type = TypeNews :: select('*')->get()->toArray() ;
-        return view('type_news',compact('dataEdit','type','action','disabled'));
+        return view('home.type_news',compact('dataEdit','type','action','disabled'));
 
     }
     public function postEditTypeNew(TypeRequest $request)
@@ -342,7 +342,7 @@ class HomeController extends Controller
         $shop = Shop :: select('id_shop','name')->get()->toArray() ;
         $news = News :: paginate(10);
         $typeNew = TypeNews :: select('id','name')->get()->toArray() ;
-        return view('news',compact('action','news','typeNew','category','shop'));
+        return view('home.news',compact('action','news','typeNew','category','shop'));
     }
 
     public function showCkfinder()
@@ -387,7 +387,7 @@ class HomeController extends Controller
         $news_shop =  Shop :: join('new_shop','new_shop.id_shop','=','shop.id_shop')->select('shop.id_shop', 'name')->where('id_news', '=', $id)->get()->toArray();
         $shop = $this->arrRemoveThesame($shop,$news_shop);
         $typeNew = TypeNews :: select('id','name')->get()->toArray() ;
-        return view('news',compact('dataEdit','typeNew','news','action','disabled','shop','category','news_shop'));
+        return view('home.news',compact('dataEdit','typeNew','news','action','disabled','shop','category','news_shop'));
     }
 
     public function postEditNews(NewsRequest $request)

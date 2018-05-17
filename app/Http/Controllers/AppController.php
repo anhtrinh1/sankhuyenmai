@@ -25,7 +25,7 @@ class AppController extends Controller
 		$ip = $request->ip();
 		if($session_visit==null){
 			session_start();
-			$session_visit = session_id();
+			$session_visit = session()->getId();
 			$request->session()->put('session_visit',$session_visit);
 			$visit = new Visit;
 			$visit->setVisit($session_visit,$ip);

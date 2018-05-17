@@ -1,31 +1,12 @@
-{{-- begin comment --}}
-<div id="comment_{{$value->id_coupon}}" class="coupon_detail" style="display: none;">
-        <div class="wrap">
-            <p>Rất vui khi nhận được ý kiến từ các bạn!</p>
-            {{-- Form Start --}}
-            <div class='form-comment'>
-                <div class="row">
-                    <div class="col-md-12">
-                        <form action="comment" method="POST" class="commentform">
-                            <div class="form-row comment-name">
-                                <input type = "text" placeholder = "Tên (Bắt Buộc)" name = "dname"  class = "name" >
-                            </div>
-                            <div class="form-row comment-email">
-                                <input type = "text" placeholder = "Mail (Bắt buộc)" name = "demail"  class = "email">
-                            </div>
-                            <div class="form-row comment-url">
-                                <input type = "text" placeholder = "Website" name = "url"  class = "url" >
-                            </div>
-                            <div class="form-row comment-message">
-                                <textarea name = "comment" placeholder = "Message (Bắt buộc)" class = "comment" ></textarea>
-                            </div>
-                            <input type="submit" name="dsubmit" class="commentSubmit" value="Submit Comment">
-                            <input style="width: 30px" type="checkbox" value="1" name="subscribe" class="subscribe" checked="checked">
-                            <p><b>Nhận thông báo khi có phản hồi.</b></p>
-                        </form>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-{{-- end comment --}}
+<div id="comment-{{$value->id_coupon}}" class="comment-list" style="display: none">
+    <div class="alert">Rất vui khi nhận được ý kiến từ các bạn!</div>
+ <div id="alert-success-{{$value->id_coupon}}" class="alert alert-success" style="display: none;"></div>
+ <div id="alert-danger-{{$value->id_coupon}}" class="alert alert-danger" style="display: none;"></div>
+ <div class="lazy" data-loader="comment" data-src="{{url('/getCommentCoupon/'.$value->id_coupon)}}">  
+</div>
+<div class="input">
+    <img style=" background-image: url(http://cp91279.biography.com/1000509261001/1000509261001_1822909398001_BIO-Biography-29-Innovators-Mark-Zuckerberg-115956-SF.jpg);">
+    <textarea id="input-cmt-{{$value->id_coupon}}" placeholder="Write a comment..."></textarea>
+    <button onclick="comment('{{route('comment')}}','input-cmt-{{$value->id_coupon}}',null, '{{$value->id_coupon}}', null);">Comment</button>
+</div>
+</div>

@@ -15,7 +15,7 @@ class Online extends Migration
     {
         Schema::create('online', function (Blueprint $table) {
             $table->string('ip',30);
-            $table->string('session',33);
+            $table->string('session');
             $table->dateTime('time_visit');
         });
     }

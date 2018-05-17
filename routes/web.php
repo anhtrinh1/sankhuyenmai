@@ -31,6 +31,17 @@ Route::prefix('/')->group(function () {
 
     Route::get('san-khuyen-mai-{id}/{titlReplaceUtf8}.html',  'AppController@getACoupon')->name('getACoupon');
     Route::get('link-click/{id}',  'AppController@ajaxUpdateClick')->name('ajaxUpdateClick');
+    //comment
+    Route::post('comment',  'CommentController@comment')->name('comment');
+
+    Route::get('getCommentCoupon/{couponId}',  'CommentController@getCommentCoupon')->name('getCommentCoupon');
+
+    Route::get('getCountCmtCoupon/{couponId}',  'CommentController@getCountCmtCoupon')->name('getCountCmtCoupon');
+
+    Route::get('getSubCommentCoupon/{comntId}',  'CommentController@getSubCmtCoupon')->name('getSubCommentCoupon');
+    
+
+    Route::post('loginAjax',  '\App\Http\Controllers\Auth\LoginController@postLogin')->name('ajaxCheckLogin');
     
 });
 
@@ -38,9 +49,7 @@ Route::prefix('/')->group(function () {
 Auth::routes();
 Route::get('/logout', '\App\Http\Controllers\Auth\LoginController@logout');
 //home
-//Route::get('home', 'HomeController@index')->name('home');
-Route::prefix('home')->group(function () {
-
+Route::group(['prefix' => 'home',  'middleware' => 'role'],function () {
     Route::get('/', 'HomeController@index')->name('home');
     Route::prefix('/')->group(function () {
         Route::get('visit-year/{year}', ['as' => 'visit-year','uses'=>'HomeController@vistYear']);
